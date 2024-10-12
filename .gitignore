@@ -1,1 +1,6 @@
 BannerPlugin/bin/
+/.vs
+/BannerPlugin/.vs/BannerPlugin
+/BannerPlugin/obj/Release/net8.0
+/BannerPlugin/obj/Debug/net8.0
+/BannerPlugin/obj/*

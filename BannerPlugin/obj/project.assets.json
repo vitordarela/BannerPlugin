@@ -2524,24 +2524,27 @@
     ]
   },
   "packageFolders": {
-    "/home/p07575/.nuget/packages/": {}
+    "C:\\Users\\vitor.darela\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/p07575/BannerPlugin/BannerPlugin/BannerPlugin.csproj",
+      "projectUniqueName": "C:\\Users\\vitor.darela\\source\\repos\\vitordarela\\BannerPlugin\\BannerPlugin\\BannerPlugin.csproj",
       "projectName": "BannerPlugin",
-      "projectPath": "/home/p07575/BannerPlugin/BannerPlugin/BannerPlugin.csproj",
-      "packagesPath": "/home/p07575/.nuget/packages/",
-      "outputPath": "/home/p07575/BannerPlugin/BannerPlugin/obj/",
+      "projectPath": "C:\\Users\\vitor.darela\\source\\repos\\vitordarela\\BannerPlugin\\BannerPlugin\\BannerPlugin.csproj",
+      "packagesPath": "C:\\Users\\vitor.darela\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vitor.darela\\source\\repos\\vitordarela\\BannerPlugin\\BannerPlugin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/p07575/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\vitor.darela\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2554,6 +2557,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2581,7 +2589,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
