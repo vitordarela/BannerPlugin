@@ -24,9 +24,10 @@ namespace BannerPlugin
 
         public required PluginConfig Config { get; set; } = new();
 
-        private static string _cachedBanner;
-        private static DateTime _lastGenerated;
-        private static readonly TimeSpan CacheDuration = TimeSpan.FromSeconds(9);
+        private string _currentBanner;
+        private DateTime _lastGenerated;
+        private readonly TimeSpan _duration = TimeSpan.FromSeconds(20); // Defina X segundos
+        private readonly Random _random = new Random();
 
         public override void Load(bool hotReload)
         {
@@ -45,11 +46,10 @@ namespace BannerPlugin
         {
             foreach (var player in Utilities.GetPlayers())
 			{
-				if (player != null && bannerEnabled.Value)
+				if (player != null && !player.IsBot && bannerEnabled.Value)
 				{
-                    if (!player.IsValid || player.IsBot || player.IsHLTV) return;
-
-                    player.PrintToCenterHtml($"<img src='{this.GetBanner()}'</img>");
+                    //if (!player.IsValid || player.IsBot || player.IsHLTV) return;
+                    player.PrintToCenterHtml($"<img src='{_currentBanner}'</img>");
                 }
 			}
         }
@@ -69,13 +69,14 @@ namespace BannerPlugin
 
 		private void OnTick()
 		{
-			if (!bannerEnabled.Value) return;
+            if (!bannerEnabled.Value) return;
 
             showHtml();
 		}
 
         private HookResult OnRoundEnd(EventRoundEnd @event, GameEventInfo info)
 		{
+            GetBanner();
             bannerEnabled.Value = true;
 			return HookResult.Continue;
 		}
@@ -92,6 +93,8 @@ namespace BannerPlugin
             {
                 AddTimer(Config.ShowBannerAfterTimeSeconds, () =>
                 {
+                    Console.WriteLine("Banner enabled");
+                    GetBanner();
                     bannerEnabled.Value = true;
 
                     AddTimer(8f, () =>
@@ -130,18 +133,8 @@ namespace BannerPlugin
             var bannerList = Config.Banners;
             if (bannerList.Length == 0) return string.Empty;
 
-            // Verifica se o banner ainda está no cache válido
-            if (_cachedBanner != null && DateTime.Now - _lastGenerated < CacheDuration)
-            {
-                return _cachedBanner;
-            }
-
-            // Gera um novo banner e armazena no cache
-            var randomBanner = bannerList[new Random().Next(bannerList.Length)];
-            _cachedBanner = randomBanner;
-            _lastGenerated = DateTime.Now;
-
-            return randomBanner;
+            _currentBanner = bannerList[_random.Next(bannerList.Length)];
+            return _currentBanner;
         }
     }
 }
